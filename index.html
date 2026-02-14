@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spin</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none'><path d='M5 5 A 16 16 0 0 1 21 21' stroke='%234ecdc4' stroke-width='8'/><path d='M21 21 A 16 16 0 0 1 5 37' stroke='%23ffe66d' stroke-width='8'/><path d='M30 13 V 29 L14 21 Z' fill='%23333' stroke='white' stroke-width='2'/></svg>">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
@@ -13,7 +14,16 @@
     <div class="container">
         <!-- Configuration Side -->
         <div class="controls">
-            <h1>Spin</h1>
+            <h1 style="display: flex; align-items: center; gap: 15px;">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6 A 16 16 0 0 1 20 20" stroke="#4ecdc4" stroke-width="8" stroke-linecap="butt" />
+        
+                <path d="M20 20 A 16 16 0 0 1 4 34" stroke="#ffe66d" stroke-width="8" stroke-linecap="butt" />
+        
+                <path d="M28 12 V 28 L12 20 L28 12 Z" fill="#333" stroke="white" stroke-width="3" stroke-linejoin="round"/>
+                </svg>
+            Spin
+            </h1>
 
             <div class="input-group">
                 <label for="options">Options (one per line)</label>
