@@ -1,55 +1,56 @@
 # Spin
 
-Ein Glücksrad für den Browser: Einträge eintragen, drehen, Ergebnis. Läuft unter [spin.bapo.me](https://spin.bapo.me).
+A lucky wheel for the browser: add entries, spin, get a result. Live at [spin.bapo.me](https://spin.bapo.me).
 
-A lucky wheel for the browser. German and English interface, light and dark mode.
+The interface is available in English and German, with light and dark mode.
 
-## Funktionen
+## Features
 
-- **Einträge** – einer pro Zeile. `Sushi *3` zählt dreifach (auch `x3` oder `×3`).
-- **Felder pro Eintrag** – bis zu 50 Kopien je Eintrag. Die Kopien werden so verteilt, dass derselbe Eintrag nie direkt neben sich steht. **Mischen** ordnet neu.
-- **Fair** – jedes Feld hat dieselbe Chance. Der Gewinner wird zuerst gezogen, dann läuft das Rad dorthin aus.
-- **Gewinner entfernen** – per Knopf im Ergebnis oder automatisch. **Entfernte zurückholen** stellt alles wieder her.
-- **Verlauf** der letzten 100 Ergebnisse.
-- **Vorlagen** – Ja/Nein, Münze, Würfel, Zahlen, Essen, Wochentage, Schere-Stein-Papier.
-- **Link teilen** – das komplette Rad steckt im Link.
-- **Vollbild**, **Leertaste** zum Drehen, Ton und Konfetti abschaltbar.
-- Animationen bei jedem Wechsel, abgeschaltet bei „Bewegung reduzieren“.
-- Alles wird lokal im Browser gespeichert. Kein Server, kein Tracking.
+- **Entries** – one per line. `Sushi *3` counts three times (`x3` and `×3` work too).
+- **Fields per entry** – up to 50 copies of each entry. Copies are spread so the same entry never sits next to itself. **Shuffle** rearranges them.
+- **Fair** – every field has the same chance. The winner is drawn first, then the wheel eases into that field.
+- **Remove the winner** – with a button on the result, or automatically. **Bring back removed** restores everything.
+- **Cancel a spin** – with the stop button or Esc, after a short confirmation.
+- **History** of the last 100 results.
+- **Presets** – yes/no, coin, dice, numbers, food, weekdays, rock-paper-scissors.
+- **Share link** – the whole wheel is stored in the link.
+- **Fullscreen**, **space bar** to spin, sound and confetti can be turned off.
+- Animations for every interaction, turned off when the system asks for reduced motion.
+- Everything is saved locally in the browser. No server, no tracking.
 
-## Aufbau
+## Structure
 
-Reines HTML, CSS und JavaScript ohne Build-Schritt. GitHub Pages liefert den Ordner direkt aus.
+Plain HTML, CSS and JavaScript with no build step. GitHub Pages serves the folder as is.
 
 ```
-index.html        Seitenstruktur
-css/style.css     Design; Farben und Schriften als Variablen ganz oben
-js/main.js        Bedienung: verbindet Oberfläche, Rad und Speicher
-js/wheel.js       Zeichnen und Drehen des Rads (Canvas)
-js/entries.js     Einträge lesen, Gewichte, Verteilung der Felder
-js/i18n.js        Alle Texte auf Deutsch und Englisch
-js/storage.js     Lokales Speichern und Teilen-Link
-js/sound.js       Tick- und Gewinnton (Web Audio, keine Dateien)
-js/motion.js      Animations-Helfer (Theme-Wechsel, Tabs, Dialog)
+index.html        Page structure
+css/style.css     Design; colours and fonts as variables at the top
+js/main.js        App logic: connects the interface, the wheel and storage
+js/wheel.js       Drawing and spinning the wheel (canvas)
+js/entries.js     Parsing entries, weights, spreading the fields
+js/i18n.js        All interface text in English and German
+js/storage.js     Local saving and the share link
+js/sound.js       Tick and win sounds (Web Audio, no audio files)
+js/motion.js      Animation helpers (theme switch, tabs, dialog)
 ```
 
-## Lokal starten
+## Run locally
 
-ES-Module brauchen einen kleinen Webserver, `file://` reicht nicht:
+ES modules need a small web server; opening the file directly (`file://`) does not work:
 
 ```sh
 python3 -m http.server 8000
-# dann http://localhost:8000 öffnen
+# then open http://localhost:8000
 ```
 
-## Typische Änderungen
+## Common changes
 
-| Was | Wo |
+| What | Where |
 |---|---|
-| Farben der Felder | `--seg-1` … `--seg-8` in `css/style.css` |
-| Hell-/Dunkel-Farben | `:root` und die beiden Dark-Blöcke in `css/style.css` |
-| Texte ändern, Sprache hinzufügen | `js/i18n.js` – `en`-Block kopieren, übersetzen, Kürzel in `LANGS` eintragen |
-| Neue Vorlage | `presetNames` und `presetItems` in `js/i18n.js`, in jeder Sprache |
-| Maximale Felder pro Eintrag | `max` am Regler `#perEntry` in `index.html` |
-| Drehgefühl | `EASING` in `js/wheel.js` |
-| Animationen | Abschnitt „motion“ in `css/style.css`; bei „Bewegung reduzieren“ im System sind sie aus |
+| Wheel colours | `--seg-1` … `--seg-8` in `css/style.css` |
+| Light and dark colours | `:root` and the two dark blocks in `css/style.css` |
+| Edit text or add a language | `js/i18n.js` – copy the `en` block, translate it, add the code to `LANGS` |
+| New preset | `presetNames` and `presetItems` in `js/i18n.js`, in every language |
+| Maximum fields per entry | `max` on the `#perEntry` slider in `index.html` |
+| Spin feel | `EASING` in `js/wheel.js` |
+| Animations | The "motion" section in `css/style.css`; they turn off when the system asks for reduced motion |

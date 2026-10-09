@@ -152,10 +152,10 @@ const STRINGS = {
   },
 };
 
-let current = 'de';
+let current = 'en';
 
 export function detectLang() {
-  const nav = (navigator.language || 'de').slice(0, 2).toLowerCase();
+  const nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
   return LANGS.includes(nav) ? nav : 'en';
 }
 
